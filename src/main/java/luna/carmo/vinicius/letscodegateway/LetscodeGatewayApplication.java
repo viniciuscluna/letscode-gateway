@@ -20,7 +20,7 @@ public class LetscodeGatewayApplication {
         return builder.routes()
                 .route(p -> p
                         .path("/api/sale/**")
-                        .uri("lb://sale/"))
+                        .uri("https://viniciuscluna-venda.herokuapp.com/"))
                 .build();
     }
 }
