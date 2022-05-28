@@ -29,7 +29,7 @@ public class LetscodeGatewayApplication {
                 .route(p -> p
                         .path("/api/sale/**")
                         .filters(f -> f.circuitBreaker(c -> c.setName("sale").setFallbackUri("/defaultFallback")))
-                        .uri("https://viniciuscfdsfdsluna-venda.herokuapp.com/"))
+                        .uri("https://viniciuscluna-venda.herokuapp.com/"))
                 .build();
     }
 
