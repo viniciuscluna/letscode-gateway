@@ -29,7 +29,19 @@ public class LetscodeGatewayApplication {
                 .route(p -> p
                         .path("/api/sale/**")
                         .filters(f -> f.circuitBreaker(c -> c.setName("sale").setFallbackUri("/defaultFallback")))
-                        .uri("https://viniciuscluna-venda.herokuapp.com/"))
+                        .uri("lb://course-sales"))
+                .route(p -> p
+                        .path("/api/product/**")
+                        .filters(f -> f.circuitBreaker(c -> c.setName("product-catalog").setFallbackUri("/defaultFallback")))
+                        .uri("lb://product-catalog"))
+                .route(p -> p
+                        .path("/api/user/**")
+                        .filters(f -> f.circuitBreaker(c -> c.setName("users-system").setFallbackUri("/defaultFallback")))
+                        .uri("http://users-system:8080"))
+                .route(p -> p
+                        .path("/api/users")
+                        .filters(f -> f.circuitBreaker(c -> c.setName("users-system").setFallbackUri("/defaultFallback")))
+                        .uri("http://users-system:8080"))
                 .build();
     }
 
